@@ -1,0 +1,34 @@
+C:\Program Files\Java\jdk1.7.0_79\bin>keytool.exe -export -alias cas-server-loca
+lhost -keypass changeit -file cas-server-localhost.crt -keystore cas.keystore -s
+torepass changeit
+Certificate stored in file <cas-server-localhost.crt>
+
+C:\Program Files\Java\jdk1.7.0_79\bin>keytool.exe -import -file cas-server-local
+host.crt -alias cas-server-localhost -keypass changeit -keystore "C:\Program Fil
+es\Java\jdk1.8.0_131\jre\lib\security\cacerts" -storepass changeit
+Owner: CN=localhost, OU=IT, O=Edelweiss, L=Mumbai, ST=MH, C=IN
+Issuer: CN=localhost, OU=IT, O=Edelweiss, L=Mumbai, ST=MH, C=IN
+Serial number: 1bd3bf48
+Valid from: Sun Mar 04 16:48:10 IST 2018 until: Sun May 03 16:48:10 IST 2037
+Certificate fingerprints:
+         MD5:  59:90:63:E5:C2:BF:E9:E4:27:C6:C1:B0:13:E2:30:28
+         SHA1: 64:3B:44:04:D9:43:AC:EA:CC:17:E4:61:9A:9D:0A:5E:4F:B2:8E:18
+         SHA256: 27:D9:69:08:47:EF:10:C6:18:70:7A:03:F9:CA:5F:F7:E4:D6:7E:24:6D:
+97:32:55:86:F5:94:2D:32:77:15:6F
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 61 12 AD A4 5C 78 FE 89   2D 41 3A 5E 91 1E 08 B0  a...\x..-A:^....
+0010: E1 68 7B 49                                        .h.I
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+
+C:\Program Files\Java\jdk1.7.0_79\bin>
