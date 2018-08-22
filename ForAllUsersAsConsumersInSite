@@ -1,0 +1,203 @@
+add this code in <script></script> in share-header.get.html.ftl (E:\alfresco\tomcat\webapps\share\WEB-INF\classes\alfresco\site-webscripts\org\alfresco\share\header\share-header.get.html.ftl) (see the share-header.get.html.ftl  and uncomment the following code for 10 to 15 minutes)
+
+/* function userDataInfo(response) { 
+            var members = JSON.parse(response.responseText);
+
+            for(var i = 0; i < members.people.length; i++) {
+                          var user = members.people[i];
+            console.log("User Name:"+user.userName);
+            console.log("User Name:"+user.firstName);
+            var authority = { 
+
+                  "authorityType" : "USER",
+
+                  "fullName" : user.userName,
+
+                  "userName" : user.userName,
+
+                  "firstName" : user.firstName,
+
+                  "lastName" : user.lastName
+
+                };
+                
+            var data = {"role":"SiteConsumer", "person": {"userName" :user.userName}};
+var sitemembers = Alfresco.constants.PROXY_URI +"api/sites/all-policies/memberships"; 
+//if (Alfresco.util.CSRFPolicy && Alfresco.util.CSRFPolicy.isFilterEnabled())
+//{
+ //  sitemembers += "?" + Alfresco.util.CSRFPolicy.getParameter() + "=" + encodeURIComponent(Alfresco.util.CSRFPolicy.getToken());
+//}
+
+   if (Alfresco.util.CSRFPolicy && Alfresco.util.CSRFPolicy.isFilterEnabled())
+{
+   YAHOO.util.Connect.initHeader(Alfresco.util.CSRFPolicy.getHeader(), Alfresco.util.CSRFPolicy.getToken(), false);
+}
+YAHOO.util.Connect.initHeader('Content-Type', 'application/json' ,true );
+YAHOO.util.Connect.asyncRequest("PUT", sitemembers, 
+        { 
+            
+            success: putResponse,
+            failure: putResponseError
+            
+        }, 
+         JSON.stringify( data ) );
+
+            // conn=remote.connect("alfresco");
+            //retval=conn.put("/api/sites/all-policies/memberships/" + encodeURIComponent(user.name), jsonUtils.toJSONString(data), "application/json");     
+            }
+
+
+        }
+function userDataErrorYahoo(){
+ alert("error");
+}
+
+
+function putResponse(response){
+var members = JSON.parse(response.responseText);
+ console.log("response:"+members);
+}
+function putResponseError(){
+
+ console.log("Error");
+}
+
+function joinAllPublicSites()
+{
+  var i,  retval, conn;
+console.log("Before Proxy:");
+var members = Alfresco.constants.PROXY_URI +"api/people"; 
+YAHOO.util.Connect.asyncRequest("GET", members, 
+        { 
+            success: userDataInfo,
+            failure: userDataErrorYahoo
+        }, 
+        null);
+
+
+  }  
+joinAllPublicSites();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################
+<@markup id="css" >
+   <#if config.global.header?? && config.global.header.legacyMode && config.global.header.dependencies?? && config.global.header.dependencies.css??>
+      <#list config.global.header.dependencies.css as cssFile>
+         <@link href="${url.context}/res${cssFile}" group="header"/>
+      </#list>
+   </#if><script>
+/* function userDataInfo(response) { 
+            var members = JSON.parse(response.responseText);
+
+            for(var i = 0; i < members.people.length; i++) {
+                          var user = members.people[i];
+            console.log("User Name:"+user.userName);
+            console.log("User Name:"+user.firstName);
+            var authority = { 
+
+                  "authorityType" : "USER",
+
+                  "fullName" : user.userName,
+
+                  "userName" : user.userName,
+
+                  "firstName" : user.firstName,
+
+                  "lastName" : user.lastName
+
+                };
+                
+            var data = {"role":"SiteConsumer", "person": {"userName" :user.userName}};
+var sitemembers = Alfresco.constants.PROXY_URI +"api/sites/all-policies/memberships"; 
+//if (Alfresco.util.CSRFPolicy && Alfresco.util.CSRFPolicy.isFilterEnabled())
+//{
+ //  sitemembers += "?" + Alfresco.util.CSRFPolicy.getParameter() + "=" + encodeURIComponent(Alfresco.util.CSRFPolicy.getToken());
+//}
+
+   if (Alfresco.util.CSRFPolicy && Alfresco.util.CSRFPolicy.isFilterEnabled())
+{
+   YAHOO.util.Connect.initHeader(Alfresco.util.CSRFPolicy.getHeader(), Alfresco.util.CSRFPolicy.getToken(), false);
+}
+YAHOO.util.Connect.initHeader('Content-Type', 'application/json' ,true );
+YAHOO.util.Connect.asyncRequest("PUT", sitemembers, 
+        { 
+            
+            success: putResponse,
+            failure: putResponseError
+            
+        }, 
+         JSON.stringify( data ) );
+
+            // conn=remote.connect("alfresco");
+            //retval=conn.put("/api/sites/all-policies/memberships/" + encodeURIComponent(user.name), jsonUtils.toJSONString(data), "application/json");     
+            }
+
+
+        }
+function userDataErrorYahoo(){
+ alert("error");
+}
+
+
+function putResponse(response){
+var members = JSON.parse(response.responseText);
+ console.log("response:"+members);
+}
+function putResponseError(){
+
+ console.log("Error");
+}
+
+function joinAllPublicSites()
+{
+  var i,  retval, conn;
+console.log("Before Proxy:");
+var members = Alfresco.constants.PROXY_URI +"api/people"; 
+YAHOO.util.Connect.asyncRequest("GET", members, 
+        { 
+            success: userDataInfo,
+            failure: userDataErrorYahoo
+        }, 
+        null);
+
+
+  }  
+joinAllPublicSites();
+*/
+</script>	
+</@>
+
+<@markup id="js">
+   <#if config.global.header?? && config.global.header.legacyMode && config.global.header.dependencies?? && config.global.header.dependencies.js??>
+      <#list config.global.header.dependencies.js as jsFile>
+         <@script src="${url.context}/res${jsFile}" group="header"/>
+      </#list>
+   </#if>
+</@>
+
+<@markup id="widgets">
+   <@inlineScript group="dashlets">
+      <#if page.url.templateArgs.site??>
+         Alfresco.constants.DASHLET_RESIZE = ${siteData.userIsSiteManager?string} && YAHOO.env.ua.mobile === null;
+      <#else>
+         Alfresco.constants.DASHLET_RESIZE = ${((page.url.templateArgs.userid!"-") = (user.name!""))?string} && YAHOO.env.ua.mobile === null;
+      </#if>
+   </@>
+   <@processJsonModel group="share"/>
+</@>
+
+<@markup id="html">
+   <div id="share-header"></div>
+</@>
